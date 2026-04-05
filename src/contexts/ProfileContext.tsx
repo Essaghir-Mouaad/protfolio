@@ -12,7 +12,6 @@ const ProfileContext = createContext<ProfileContextType | undefined>(undefined)
 
 export function ProfileProvider({ children }: { children: React.ReactNode }) {
   const [profile, setProfileState] = useState<Profile>('data-ai')
-  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     try {
@@ -27,7 +26,6 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
     } catch (err) {
       console.error('Error reading profile cookie:', err)
     }
-    setMounted(true)
   }, [])
 
   useEffect(() => {
@@ -39,10 +37,6 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
   const setProfile = (p: Profile) => {
     setProfileState(p)
     document.cookie = `mouaad_profile=${p};path=/;max-age=31536000`
-  }
-
-  if (!mounted) {
-    return <>{children}</>
   }
 
   return (
