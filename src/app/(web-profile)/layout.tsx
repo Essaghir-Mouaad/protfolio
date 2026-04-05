@@ -1,5 +1,3 @@
-'use client'
-
 import { WebNavbar } from '@/components/web/WebNavbar'
 
 export default function WebProfileLayout({

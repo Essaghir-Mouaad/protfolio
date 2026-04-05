@@ -1,5 +1,3 @@
-'use client'
-
 import { AINavbar } from '@/components/ai/AINavbar'
 
 export default function AIProfileLayout({
