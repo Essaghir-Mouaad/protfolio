@@ -7,6 +7,9 @@ import { motion } from 'framer-motion'
 // In a real setup, split into layout.tsx and client component
 
 export default function LandingPage() {
+
+
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -39,6 +42,9 @@ export default function LandingPage() {
       transition: { duration: 0.3 },
     },
   }
+
+
+
 
   return (
     <motion.div
@@ -168,7 +174,7 @@ export default function LandingPage() {
                     >
                       ⚡
                     </motion.div>
-                    <h2 className="text-4xl font-bold text-web-text mb-6 tracking-tight">Web Developer</h2>
+                    <h2 className="text-4xl font-bold text-gray-700 mb-6 tracking-tight">Web Developer</h2>
                     <div className="space-y-3 text-slate-600">
                       <motion.p
                         className="flex items-center"

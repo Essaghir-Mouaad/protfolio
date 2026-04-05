@@ -1,11 +1,15 @@
 'use client'
 
 import { owner } from '@/lib/data'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import emailjs from '@emailjs/browser';
 
 // Note: Metadata export not supported in client components, see layout or create a server component wrapper
 
 export default function ContactPage() {
+
+  const form = useRef<HTMLFormElement | null>(null)
+
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -14,34 +18,52 @@ export default function ContactPage() {
   })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
   const sectionCardClass =
-    'bg-white dark:bg-ai-surface border border-gray-200 dark:border-ai-secondary/20 rounded-xl p-6 shadow-sm'
+    ' border border-gray-200 dark:border-ai-secondary/20 rounded-xl p-6 shadow-sm'
+
+  const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+  const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+  const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormState(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoading(true)
+    setError('')
+    setSubmitted(false)
+
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      setError('Email service is not configured yet. Add EmailJS public environment variables and try again.')
+      setLoading(false)
+      return
+    }
+
+    if (!form.current) {
+      setError('Form reference is unavailable. Please refresh and try again.')
+      setLoading(false)
+      return
+    }
 
     try {
-      // TODO: Configure Formspree or Resend for email delivery
-      // Replace with your actual form endpoint
-      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formState),
+      await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form.current, {
+        publicKey: EMAILJS_PUBLIC_KEY,
       })
 
-      if (response.ok) {
-        setSubmitted(true)
-        setFormState({ name: '', email: '', subject: '', message: '' })
-        setTimeout(() => setSubmitted(false), 3000)
-      }
-    } catch (error) {
-      console.error('Form submission error:', error)
+      setSubmitted(true)
+      setFormState({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      })
+    } catch (err) {
+      console.error('Email send failed', err)
+      setError('Failed to send message. Please try again in a moment.')
     } finally {
       setLoading(false)
     }
@@ -68,7 +90,13 @@ export default function ContactPage() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          {error && (
+            <div className="p-4 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-400/30 text-red-700 dark:text-red-200 rounded-lg">
+              {error}
+            </div>
+          )}
+
+          <form ref={form} onSubmit={sendEmail} className="space-y-4">
             <div>
               <label htmlFor="name" className="block text-sm font-semibold text-web-text dark:text-ai-text mb-2">
                 Name
@@ -80,7 +108,7 @@ export default function ContactPage() {
                 value={formState.name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-white dark:bg-ai-surface border border-gray-200 dark:border-ai-secondary/20 text-web-text dark:text-ai-text rounded-lg focus:outline-none focus:border-web-primary dark:focus:border-ai-primary transition-colors"
+                className="w-full px-4 py-3  border border-gray-200 dark:border-ai-secondary/20 text-web-text dark:text-ai-text rounded-lg focus:outline-none focus:border-web-primary dark:focus:border-ai-primary transition-colors"
                 placeholder="Your name"
               />
             </div>
@@ -96,7 +124,7 @@ export default function ContactPage() {
                 value={formState.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-white dark:bg-ai-surface border border-gray-200 dark:border-ai-secondary/20 text-web-text dark:text-ai-text rounded-lg focus:outline-none focus:border-web-primary dark:focus:border-ai-primary transition-colors"
+                className="w-full px-4 py-3  border border-gray-200 dark:border-ai-secondary/20 text-web-text dark:text-ai-text rounded-lg focus:outline-none focus:border-web-primary dark:focus:border-ai-primary transition-colors"
                 placeholder="your@email.com"
               />
             </div>
@@ -112,7 +140,7 @@ export default function ContactPage() {
                 value={formState.subject}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-white dark:bg-ai-surface border border-gray-200 dark:border-ai-secondary/20 text-web-text dark:text-ai-text rounded-lg focus:outline-none focus:border-web-primary dark:focus:border-ai-primary transition-colors"
+                className="w-full px-4 py-3  border border-gray-200 dark:border-ai-secondary/20 text-web-text dark:text-ai-text rounded-lg focus:outline-none focus:border-web-primary dark:focus:border-ai-primary transition-colors"
                 placeholder="What's this about?"
               />
             </div>
@@ -128,7 +156,7 @@ export default function ContactPage() {
                 onChange={handleChange}
                 required
                 rows={5}
-                className="w-full px-4 py-3 bg-white dark:bg-ai-surface border border-gray-200 dark:border-ai-secondary/20 text-web-text dark:text-ai-text rounded-lg focus:outline-none focus:border-web-primary dark:focus:border-ai-primary transition-colors resize-none"
+                className="w-full px-4 py-3  border border-gray-200 dark:border-ai-secondary/20 text-web-text dark:text-ai-text rounded-lg focus:outline-none focus:border-web-primary dark:focus:border-ai-primary transition-colors resize-none"
                 placeholder="Your message..."
               />
             </div>
@@ -136,7 +164,7 @@ export default function ContactPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full px-6 py-3 bg-web-primary dark:bg-ai-primary text-white dark:text-ai-bg font-semibold rounded-lg hover:bg-web-secondary dark:hover:bg-ai-primary/90 transition-colors disabled:opacity-50"
+              className="w-full px-6 py-3 border border-gray-100 rounded-lg hover:bg-blue-400  transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Sending...' : 'Send Message'}
             </button>
@@ -205,13 +233,13 @@ export default function ContactPage() {
             <div className="space-y-2">
               <a
                 href="/cv-ai.pdf"
-                className="block w-full px-4 py-3 bg-ai-surface text-ai-primary border border-ai-primary/30 font-semibold rounded-lg hover:bg-ai-surface/80 transition-colors text-center"
+                className="block w-full px-4 py-3 bg-ai-surface text-ai-primary border border-ai-primary/30 font-semibold rounded-lg hover:bg-gray-900 transition-colors text-center"
               >
                 📄 Download AI CV
               </a>
               <a
                 href="/cv-web.pdf"
-                className="block w-full px-4 py-3 bg-green-50 dark:bg-ai-surface text-web-primary dark:text-ai-text border border-web-primary/20 dark:border-ai-secondary/40 font-semibold rounded-lg hover:bg-green-100 dark:hover:bg-ai-surface/80 transition-colors text-center"
+                className="block w-full px-4 py-3 bg-green-500 text-web-primary dark:text-ai-text border border-web-primary/20 dark:border-ai-secondary/40 font-semibold rounded-lg hover:bg-green-400 dark:hover:bg-ai-surface/80 transition-colors text-center"
               >
                 📄 Download Web CV
               </a>
