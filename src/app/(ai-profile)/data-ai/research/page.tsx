@@ -89,7 +89,7 @@ export default function AIResearchPage() {
       <div className="bg-ai-surface border border-ai-primary/20 rounded-lg p-8">
         <h3 className="text-xl font-bold text-ai-primary mb-4">Academic Context</h3>
         <p className="text-ai-text-secondary leading-relaxed">
-          These implementations are part of rigorous coursework at ENSA Safi's engineering program in Computer Science and AI. Rather than relying on pre-built libraries, each project emphasizes understanding the mathematical foundations and algorithmic design of modern AI systems. This approach builds deep expertise in neural networks, natural language processing, and machine learning fundamentals.
+          These implementations are part of rigorous coursework at ENSA Safi&apos;s engineering program in Computer Science and AI. Rather than relying on pre-built libraries, each project emphasizes understanding the mathematical foundations and algorithmic design of modern AI systems. This approach builds deep expertise in neural networks, natural language processing, and machine learning fundamentals.
         </p>
       </div>
     </div>

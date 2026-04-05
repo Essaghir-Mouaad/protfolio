@@ -1,3 +1,7 @@
+'use client'
+
+export const dynamic = 'force-dynamic'
+
 import { AINavbar } from '@/components/ai/AINavbar'
 
 export default function AIProfileLayout({

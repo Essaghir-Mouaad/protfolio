@@ -1,3 +1,7 @@
+'use client'
+
+export const dynamic = 'force-dynamic'
+
 import { WebNavbar } from '@/components/web/WebNavbar'
 
 export default function WebProfileLayout({
