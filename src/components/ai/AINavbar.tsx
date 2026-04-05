@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useProfile } from '@/contexts/ProfileContext'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
-import { ChevronUp, Menu, MenuIcon } from 'lucide-react'
+import { ChevronUp, MenuIcon } from 'lucide-react'
 
 export function AINavbar() {
   const router = useRouter()
