@@ -1,0 +1,210 @@
+/* ════════════════════════════════════════════════════════════════
+   WEB DEV PROFILE THEME
+   Light mode with emerald accents, clean product-like design
+   ════════════════════════════════════════════════════════════════ */
+
+[data-theme="light"] {
+  /* Color Variables */
+  --color-bg-primary: #fafafa;
+  --color-bg-secondary: #ffffff;
+  --color-bg-tertiary: #f3f4f6;
+  
+  --color-accent-primary: #10b981; /* emerald-500 */
+  --color-accent-secondary: #059669; /* emerald-600 */
+  --color-accent-tertiary: #34d399; /* emerald-400 */
+  
+  --color-text-primary: #111827;
+  --color-text-secondary: #6b7280;
+  --color-text-tertiary: #9ca3af;
+  
+  --color-border: rgba(16, 185, 129, 0.15);
+  --color-border-light: rgba(16, 185, 129, 0.08);
+
+  color-scheme: light;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+[data-theme="light"] body {
+  background: linear-gradient(
+    135deg,
+    #fafafa 0%,
+    #f5f7fa 50%,
+    #fafafa 100%
+  );
+  background-attachment: fixed;
+}
+
+/* HERO GRADIENT - Web Section */
+[data-theme="light"] .hero-gradient {
+  background: radial-gradient(
+    ellipse 80% 80% at 50% 0%,
+    rgba(16, 185, 129, 0.12) 0%,
+    rgba(5, 150, 105, 0.04) 40%,
+    transparent 80%
+  );
+}
+
+/* TEXT ACCENT */
+[data-theme="light"] .text-accent {
+  color: var(--color-accent-primary);
+  font-weight: 600;
+}
+
+/* GLOW EFFECT - Web (subtle) */
+[data-theme="light"] .glow-emerald {
+  color: var(--color-accent-primary);
+  text-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+[data-theme="light"] .glow-emerald-box {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.15),
+              inset 0 0 20px rgba(16, 185, 129, 0.03);
+}
+
+/* BORDER WITH SHADOW */
+[data-theme="light"] .border-glow {
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.1) inset;
+  transition: all 0.3s ease;
+}
+
+[data-theme="light"] .border-glow:hover {
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.15) inset,
+              0 0 30px rgba(16, 185, 129, 0.1);
+}
+
+/* GLASS MORPHISM - Web (clean) */
+[data-theme="light"] .glass-web {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+[data-theme="light"] .glass-web:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
+}
+
+/* ANIMATED GRADIENT BORDER */
+[data-theme="light"] .gradient-border {
+  position: relative;
+  background: var(--color-bg-secondary);
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+[data-theme="light"] .gradient-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background: linear-gradient(
+    135deg,
+    #10b981 0%,
+    #059669 50%,
+    #10b981 100%
+  );
+  border-radius: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+[data-theme="light"] .gradient-border:hover::before {
+  opacity: 0.2;
+}
+
+/* PRODUCT CARD STYLE */
+[data-theme="light"] .product-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+[data-theme="light"] .product-card:hover {
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.1);
+  transform: translateY(-4px);
+}
+
+/* CARD HOVER LIFT */
+[data-theme="light"] .card-lift {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+[data-theme="light"] .card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(16, 185, 129, 0.12);
+}
+
+/* SECTION DIVIDER */
+[data-theme="light"] .section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(16, 185, 129, 0.25) 50%,
+    transparent 100%
+  );
+}
+
+/* BADGE STYLING */
+[data-theme="light"] .badge-emerald {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--color-accent-secondary);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+[data-theme="light"] .badge-emerald:hover {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+/* SMOOTH SCROLL */
+[data-theme="light"] {
+  scroll-behavior: smooth;
+  scrollbar-color: rgba(16, 185, 129, 0.4) rgba(245, 247, 250, 0.8);
+}
+
+[data-theme="light"] ::-webkit-scrollbar {
+  width: 8px;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-track {
+  background: rgba(245, 247, 250, 0.8);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.4);
+  border-radius: 4px;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(16, 185, 129, 0.7);
+}
+
+/* LOADING/SHIMMER STATE */
+[data-theme="light"] .skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(16, 185, 129, 0.05) 0%,
+    rgba(16, 185, 129, 0.15) 50%,
+    rgba(16, 185, 129, 0.05) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}

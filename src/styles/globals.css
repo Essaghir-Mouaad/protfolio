@@ -1,0 +1,68 @@
+/* styles/globals.css */
+@import './animations.css';
+@import './ai-theme.css';
+@import './web-theme.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+/* Light theme (Web profile) */
+html[data-theme='light'] {
+  color-scheme: light;
+}
+
+html[data-theme='light'] {
+  background-color: #fafafa;
+  color: #111827;
+}
+
+html[data-theme='light'] body {
+  background-color: #fafafa;
+  color: #111827;
+}
+
+/* Dark theme (AI profile) */
+html[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+html[data-theme='dark'] {
+  background-color: #050a14;
+  color: #e2e8f0;
+}
+
+html[data-theme='dark'] body {
+  background-color: #050a14;
+  color: #e2e8f0;
+}
+
+/* Prevent layout shift */
+html {
+  overflow-y: scroll;
+}
+
+/* Selection color */
+html[data-theme='dark']::selection {
+  background-color: rgba(34, 211, 238, 0.2);
+  color: #22d3ee;
+}
+
+html[data-theme='light']::selection {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+}

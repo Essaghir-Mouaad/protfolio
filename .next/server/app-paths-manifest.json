@@ -1,0 +1,6 @@
+{
+  "/page": "app/page.js",
+  "/(ai-profile)/data-ai/page": "app/(ai-profile)/data-ai/page.js",
+  "/(ai-profile)/data-ai/projects/page": "app/(ai-profile)/data-ai/projects/page.js",
+  "/(web-profile)/web-dev/page": "app/(web-profile)/web-dev/page.js"
+}
