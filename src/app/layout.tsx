@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { cookies } from 'next/headers'
 import { ProfileProvider } from '@/contexts/ProfileContext'
 import '@/styles/globals.css'
 
@@ -21,15 +22,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const profileCookie = cookies().get('mouaad_profile')?.value
+  const initialProfile = profileCookie === 'web-dev' ? 'web-dev' : 'data-ai'
+  const initialTheme = initialProfile === 'data-ai' ? 'dark' : 'light'
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-theme={initialTheme}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#050a14" />
       </head>
       <body>
-        <ProfileProvider>
+        <ProfileProvider initialProfile={initialProfile}>
           {children}
         </ProfileProvider>
       </body>

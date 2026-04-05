@@ -10,23 +10,34 @@ interface ProfileContextType {
 
 const ProfileContext = createContext<ProfileContextType | undefined>(undefined)
 
-export function ProfileProvider({ children }: { children: React.ReactNode }) {
-  const [profile, setProfileState] = useState<Profile>('data-ai')
+function parseProfileFromCookie(cookieValue?: string): Profile | undefined {
+  if (!cookieValue) return undefined
+  const saved = cookieValue
+    .split('; ')
+    .find(row => row.startsWith('mouaad_profile='))
+    ?.split('=')[1]
 
-  useEffect(() => {
-    try {
-      const saved = document.cookie
-        .split('; ')
-        .find(row => row.startsWith('mouaad_profile='))
-        ?.split('=')[1] as Profile | undefined
-      
-      if (saved === 'data-ai' || saved === 'web-dev') {
-        setProfileState(saved)
-      }
-    } catch (err) {
-      console.error('Error reading profile cookie:', err)
+  if (saved === 'data-ai' || saved === 'web-dev') {
+    return saved
+  }
+
+  return undefined
+}
+
+export function ProfileProvider({
+  children,
+  initialProfile,
+}: {
+  children: React.ReactNode
+  initialProfile?: Profile
+}) {
+  const [profile, setProfileState] = useState<Profile>(() => {
+    if (initialProfile) return initialProfile
+    if (typeof document !== 'undefined') {
+      return parseProfileFromCookie(document.cookie) ?? 'data-ai'
     }
-  }, [])
+    return 'data-ai'
+  })
 
   useEffect(() => {
     // Update data-theme attribute on html element
