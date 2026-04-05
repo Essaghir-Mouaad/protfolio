@@ -14,6 +14,8 @@ export default function ContactPage() {
   })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const sectionCardClass =
+    'bg-white dark:bg-ai-surface border border-gray-200 dark:border-ai-secondary/20 rounded-xl p-6 shadow-sm'
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -61,7 +63,7 @@ export default function ContactPage() {
           <h2 className="text-2xl font-bold text-web-text dark:text-ai-text">Send a Message</h2>
 
           {submitted && (
-            <div className="p-4 bg-green-50 dark:bg-ai-surface border border-green-200 dark:border-ai-primary/20 text-green-800 dark:text-green-300 rounded-lg">
+            <div className="p-4 bg-green-50 dark:bg-emerald-950/30 border border-green-200 dark:border-emerald-400/30 text-green-800 dark:text-emerald-200 rounded-lg">
               ✓ Message sent! I&apos;ll get back to you soon.
             </div>
           )}
@@ -146,7 +148,7 @@ export default function ContactPage() {
           <h2 className="text-2xl font-bold text-web-text dark:text-ai-text">Contact Information</h2>
 
           <div className="space-y-6">
-            <div className="bg-white dark:bg-ai-surface border border-gray-200 dark:border-ai-secondary/20 rounded-lg p-6">
+            <div className={sectionCardClass}>
               <h3 className="text-sm font-semibold uppercase tracking-wider text-web-text-secondary dark:text-ai-text-secondary mb-2">
                 Email
               </h3>
@@ -158,7 +160,7 @@ export default function ContactPage() {
               </a>
             </div>
 
-            <div className="bg-white dark:bg-ai-surface border border-gray-200 dark:border-ai-secondary/20 rounded-lg p-6">
+            <div className={sectionCardClass}>
               <h3 className="text-sm font-semibold uppercase tracking-wider text-web-text-secondary dark:text-ai-text-secondary mb-2">
                 Phone
               </h3>
@@ -170,7 +172,7 @@ export default function ContactPage() {
               </a>
             </div>
 
-            <div className="bg-white dark:bg-ai-surface border border-gray-200 dark:border-ai-secondary/20 rounded-lg p-6">
+            <div className={sectionCardClass}>
               <h3 className="text-sm font-semibold uppercase tracking-wider text-web-text-secondary dark:text-ai-text-secondary mb-3">
                 Social
               </h3>
@@ -209,7 +211,7 @@ export default function ContactPage() {
               </a>
               <a
                 href="/cv-web.pdf"
-                className="block w-full px-4 py-3 bg-green-50 text-web-primary border border-web-primary/20 font-semibold rounded-lg hover:bg-green-100 transition-colors text-center"
+                className="block w-full px-4 py-3 bg-green-50 dark:bg-ai-surface text-web-primary dark:text-ai-text border border-web-primary/20 dark:border-ai-secondary/40 font-semibold rounded-lg hover:bg-green-100 dark:hover:bg-ai-surface/80 transition-colors text-center"
               >
                 📄 Download Web CV
               </a>

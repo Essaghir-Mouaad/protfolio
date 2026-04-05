@@ -22,11 +22,18 @@ export const aiProjects: Project[] = [
     badge: 'Featured',
   },
   {
-    id: 'house-price-prediction',
-    title: 'House Price Prediction',
+    id: 'qa-transformers',
+    title: 'Question Answering with Transformers (from scratch)',
+    date: '2023–2024',
+    description: 'QA model built from scratch implementing self-attention, cross-attention, masked-attention, and multi-head attention.',
+    stack: ['Python', 'Transformers', 'PyTorch', 'Attention Mechanisms',"MultiHead Attention"],
+  },
+  {
+    id: 'real-time-disease-prediction',
+    title: 'Real-Time Disease Prediction',
     date: 'January 2025',
-    description: 'ML regression model built with Scikit-learn to estimate real estate prices. Data visualization with Matplotlib. Deployed via Flask.',
-    stack: ['Python', 'Scikit-learn', 'Matplotlib', 'Flask'],
+    description: 'ML regression model built with CNN to estimate that the leafs contain certain diseases. Data visualization with Matplotlib. Deployed via FastAPI. as a web service for real-time predictions.Docker for generating a container for the application.',
+    stack: ['Python', 'TensorFlow', "Tensorserver", "Tensorboard", 'Docker', 'FastAPI'],
   },
   {
     id: 'autocomplete-model',
@@ -49,23 +56,16 @@ export const aiProjects: Project[] = [
     description: 'Full NMT system built from scratch implementing the attention mechanism, encoder, and decoder for English-to-Portuguese translation.',
     stack: ['Python', 'Attention Mechanism', 'Encoder-Decoder'],
   },
-  {
-    id: 'qa-transformers',
-    title: 'Question Answering with Transformers (from scratch)',
-    date: '2023–2024',
-    description: 'QA model built from scratch implementing self-attention, cross-attention, masked-attention, and multi-head attention.',
-    stack: ['Python', 'Transformers', 'PyTorch'],
-  },
 ]
 
 export const webProjects: Project[] = [
   {
     id: 'stock-management',
-    title: 'Stock Management App — GTE Internship',
-    date: 'July–September 2025 (last updated January 2026)',
+    title: 'Stock Management App — For AvenirToubkal Association',
+    date: 'July–September 2025 - lastly updated January 2026',
     description: 'Full-stack stock management application built for an association during internship at Guarhim Technologie (GTE), Marrakech. Upcoming integration of AI models to analyze product consumption, identify top categories, and perform stock analytics.',
-    stack: ['React.js', 'Node.js', 'Express', 'MongoDB'],
-    badge: 'Internship · GTE Marrakech',
+    stack: ['React.js', 'Node.js', 'NextJs', 'Prisma', "Tailwind CSS", "3JS"],
+    badge: 'Internship · Association-AvenirToubkal',
   },
   {
     id: 'ecommerce-platform',
@@ -86,7 +86,7 @@ export const webProjects: Project[] = [
 export const aiSkills: SkillGroup[] = [
   {
     category: 'ML & DL Frameworks',
-    skills: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'OpenCV', 'MobileNet', 'Pandas', 'Matplotlib'],
+    skills: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'OpenCV', 'NLP', 'Pandas', 'Matplotlib'],
   },
   {
     category: 'NLP & LLMs',
@@ -94,7 +94,7 @@ export const aiSkills: SkillGroup[] = [
   },
   {
     category: 'Languages',
-    skills: ['Python', 'JavaScript', 'Java', 'C/C++', 'Dart'],
+    skills: ['Python', 'JavaScript', 'C#', 'C/C++', 'Dart', 'SQL'],
   },
   {
     category: 'DevOps & Tools',
@@ -121,7 +121,7 @@ export const webSkills: SkillGroup[] = [
   },
   {
     category: 'Languages',
-    skills: ['JavaScript', 'Python', 'Java', 'C/C++', 'Dart'],
+    skills: ['JavaScript', 'Python', 'C#', 'C/C++', 'Dart', 'SQL'],
   },
 ]
 

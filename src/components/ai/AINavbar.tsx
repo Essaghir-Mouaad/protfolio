@@ -4,11 +4,22 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useProfile } from '@/contexts/ProfileContext'
 import { usePathname } from 'next/navigation'
+import { useState } from 'react'
+import { ChevronUp, Menu, MenuIcon } from 'lucide-react'
 
 export function AINavbar() {
   const router = useRouter()
   const { setProfile } = useProfile()
   const pathname = usePathname()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  const verticalNavLinks = [
+    { href: '/data-ai/skills', label: 'Skills' },
+    { href: '/data-ai/projects', label: 'Projects' },
+    { href: '/data-ai/research', label: 'Research' },
+    { href: '/about', label: 'About' },
+    { href: '/contact', label: 'Contact' },
+  ]
 
   const handleProfileSwitch = () => {
     setProfile('web-dev')
@@ -28,66 +39,62 @@ export function AINavbar() {
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center gap-8">
-            <Link
-              href="/data-ai/skills"
-              className={`text-sm transition-all ${
-                isActive('/data-ai/skills')
-                  ? 'text-ai-primary border-b-2 border-ai-primary pb-1'
-                  : 'text-ai-text-secondary hover:text-ai-text'
-              }`}
-            >
-              Skills
-            </Link>
-            <Link
-              href="/data-ai/projects"
-              className={`text-sm transition-all ${
-                isActive('/data-ai/projects')
-                  ? 'text-ai-primary border-b-2 border-ai-primary pb-1'
-                  : 'text-ai-text-secondary hover:text-ai-text'
-              }`}
-            >
-              Projects
-            </Link>
-            <Link
-              href="/data-ai/research"
-              className={`text-sm transition-all ${
-                isActive('/data-ai/research')
-                  ? 'text-ai-primary border-b-2 border-ai-primary pb-1'
-                  : 'text-ai-text-secondary hover:text-ai-text'
-              }`}
-            >
-              Research
-            </Link>
-            <Link
-              href="/about"
-              className={`text-sm transition-all ${
-                isActive('/about')
-                  ? 'text-ai-primary border-b-2 border-ai-primary pb-1'
-                  : 'text-ai-text-secondary hover:text-ai-text'
-              }`}
-            >
-              About
-            </Link>
-            <Link
-              href="/contact"
-              className={`text-sm transition-all ${
-                isActive('/contact')
-                  ? 'text-ai-primary border-b-2 border-ai-primary pb-1'
-                  : 'text-ai-text-secondary hover:text-ai-text'
-              }`}
-            >
-              Contact
-            </Link>
+            {verticalNavLinks.map(link => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-sm transition-all ${
+                  isActive(link.href)
+                    ? 'text-ai-primary border-b-2 border-ai-primary pb-1'
+                    : 'text-ai-text-secondary hover:text-ai-text'
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
 
-          {/* Profile Switch Button */}
-          <button
-            onClick={handleProfileSwitch}
-            className="px-4 py-2 bg-ai-secondary hover:bg-ai-secondary/90 text-ai-bg font-semibold rounded-full text-sm transition-all duration-200 shadow-sm hover:shadow-md"
-          >
-            ⚡ Web Dev
-          </button>
+          <div className="flex items-center gap-2">
+            {/* Mobile Menu Toggle */}
+            <button
+              onClick={() => setIsMobileMenuOpen(prev => !prev)}
+              className="md:hidden py-2  rounded-lg text-ai-text-secondary hover:text-ai-text hover:border-ai-primary transition-colors"
+              aria-label="Toggle navigation menu"
+              aria-expanded={isMobileMenuOpen}
+            >
+              {isMobileMenuOpen ? <ChevronUp/> : <MenuIcon className='w-6 h-5' />}
+            </button>
+
+            {/* Profile Switch Button */}
+            <button
+              onClick={handleProfileSwitch}
+              className="px-3 sm:px-4 py-2 bg-ai-secondary hover:bg-blue-950 text-ai-bg font-semibold rounded-full text-sm transition-all duration-200 shadow-sm hover:shadow-md"
+            >
+              ⚡ Web Dev
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Vertical Navigation */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden pb-4 pt-2 space-y-2">
+            {verticalNavLinks.map(link => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`block px-3 py-2 rounded-lg text-sm transition-all ${
+                  isActive(link.href)
+                    ? 'text-ai-primary bg-ai-primary/10 border border-ai-primary/30'
+                    : 'text-ai-text-secondary hover:text-ai-text hover:bg-ai-primary/5'
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))
+            }
+          </div>
+        )}
       </div>
     </nav>
   )

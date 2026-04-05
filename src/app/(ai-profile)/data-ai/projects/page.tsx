@@ -10,6 +10,34 @@ export const metadata: Metadata = {
 export default function AIProjectsPage() {
   return (
     <div className="space-y-12 py-12">
+      <section className="relative overflow-hidden rounded-2xl border border-[color:var(--color-border)] bg-[var(--color-bg-secondary)] p-6 md:p-8 shadow-sm">
+        <div className="pointer-events-none absolute inset-0 opacity-25 [background:radial-gradient(circle_at_15%_20%,var(--color-accent-primary),transparent_40%),radial-gradient(circle_at_85%_75%,var(--color-accent-secondary),transparent_42%)]" />
+        <div className="pointer-events-none absolute -left-10 -top-10 h-32 w-32 rounded-full border border-[color:var(--color-border)] bg-[var(--color-bg-tertiary)]/50 blur-2xl animate-float" />
+        <div className="pointer-events-none absolute -bottom-12 right-0 h-40 w-40 rounded-full border border-[color:var(--color-border)] bg-[var(--color-bg-tertiary)]/40 blur-2xl animate-pulse" />
+
+        <div className="relative z-10 flex flex-col gap-5">
+          <span className="w-fit rounded-full border border-[color:var(--color-border)] bg-[var(--color-bg-tertiary)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-accent-primary)]">
+            Upcoming Launch
+          </span>
+
+          <h3 className="text-2xl md:text-3xl font-bold leading-tight text-[color:var(--color-text-primary)]">
+            A Real-World SaaS Is Coming Soon
+          </h3>
+
+          <p className="max-w-3xl text-base md:text-lg leading-relaxed text-[color:var(--color-text-secondary)]">
+            We are building a platform that combines AI, web, desktop, and mobile into one connected product to solve a real operational problem. Early prototypes are in progress, and major updates are coming soon.
+          </p>
+
+          <div className="flex flex-wrap items-center gap-3 pt-1">
+            <span className="rounded-lg border border-[color:var(--color-border)] bg-[var(--color-bg-tertiary)] px-3 py-1.5 text-sm font-semibold text-[color:var(--color-accent-primary)]">
+              AI + Product Engineering
+            </span>
+            <span className="rounded-lg border border-[color:var(--color-border)] bg-[var(--color-bg-tertiary)] px-3 py-1.5 text-sm font-semibold text-[color:var(--color-accent-primary)]">
+              Sneak Peeks Soon
+            </span>
+          </div>
+        </div>
+      </section>
       <div className="space-y-4">
         <h1 className="text-4xl font-bold text-ai-text">AI & ML Projects</h1>
         <p className="text-lg text-ai-text-secondary max-w-2xl">

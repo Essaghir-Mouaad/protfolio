@@ -8,9 +8,6 @@ export const metadata: Metadata = {
 }
 
 export default function AIResearchPage() {
-  // Models 3-6 are the from-scratch research projects
-  const researchModels = aiProjects.slice(2)
-
   const modelConcepts: Record<string, { concept: string; techniques: string[] }> = {
     'autocomplete-model': {
       concept: 'Predicting the next word in a sequence using statistical language models',
@@ -30,6 +27,11 @@ export default function AIResearchPage() {
     },
   }
 
+  // Keep research list aligned with data even if project ordering changes.
+  const researchModels = aiProjects.filter(
+    project => project.title.toLowerCase().includes('from scratch') || Boolean(modelConcepts[project.id]),
+  )
+
   return (
     <div className="space-y-12 py-12">
       <div className="space-y-6">
@@ -41,7 +43,10 @@ export default function AIResearchPage() {
 
       <div className="space-y-6">
         {researchModels.map(model => {
-          const info = modelConcepts[model.id]
+          const info = modelConcepts[model.id] ?? {
+            concept: model.description,
+            techniques: model.stack,
+          }
           const year = model.date.split('–')[0].trim()
 
           return (

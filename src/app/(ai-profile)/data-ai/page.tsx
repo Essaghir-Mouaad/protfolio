@@ -101,8 +101,8 @@ export default function AIHomePage() {
         {[
           { number: '4', label: 'From-scratch models built' },
           { number: '6', label: 'ML/AI projects deployed' },
-          { number: '3+', label: 'AI frameworks mastered' },
-          { number: '1', label: 'Internship at GTE Marrakech' },
+          { number: '2+', label: 'AI frameworks mastered' },
+          { number: '1', label: 'Internship at Web dev merged with AI' },
         ].map((stat, idx) => (
           <AnimatedCard key={idx} className="p-6 text-center" hover="scale">
             <motion.p className="text-4xl font-bold text-ai-primary mb-3">

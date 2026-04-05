@@ -44,7 +44,7 @@ export function AnimatedCard({
 
   const staggerClass = stagger ? `animate-stagger-${Math.min(index + 1, 6)}` : ''
 
-  const cardClasses = `${baseClasses} ${hoverClasses[hover]} ${staggerClass} ${className}`
+  const cardClasses = `${baseClasses} ${hoverClasses[hover]} ${staggerClass} ${className} border ${isDark ? 'bg-slate-900/50 border-cyan-500/20 hover:border-cyan-500/50' : 'bg-white border-emerald-500/20 hover:border-emerald-500/40'}`
 
   return (
     <div className={cardClasses} style={{ animationDelay: `${delay}ms` }}>
