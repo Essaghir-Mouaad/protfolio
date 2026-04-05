@@ -7,6 +7,7 @@
 'use client'
 
 import React from 'react'
+import Image from 'next/image'
 
 interface AnimatedCardProps {
   children: React.ReactNode
@@ -95,9 +96,11 @@ export function ProjectCard({
       {/* Project Image */}
       {image && (
         <div className="relative w-full h-48 overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900">
-          <img
+          <Image
             src={image}
             alt={title}
+            width={800}
+            height={400}
             className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
           />
           <div

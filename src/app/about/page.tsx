@@ -18,13 +18,13 @@ export default function AboutPage() {
         <h1 className="text-4xl font-bold text-web-text dark:text-ai-text">About Me</h1>
         <div className="max-w-3xl">
           <p className={`${textClass} text-web-text-secondary dark:text-ai-text-secondary mb-4`}>
-            I'm Mouaad Essaghir, a first-year engineering student at ENSA Safi (École Nationale des Sciences Appliquées, Université Cadi Ayyad), specializing in Computer Science and Artificial Intelligence.
+            I&apos;m Mouaad Essaghir, a first-year engineering student at ENSA Safi (École Nationale des Sciences Appliquées, Université Cadi Ayyad), specializing in Computer Science and Artificial Intelligence.
           </p>
           <p className={`${textClass} text-web-text-secondary dark:text-ai-text-secondary mb-4`}>
-            I'm passionate about AI, LLMs, and generative AI — and I build things from scratch to truly understand them. Currently working on a large-scale SaaS product that brings together AI, web, desktop, and mobile into a single platform.
+            I&apos;m passionate about AI, LLMs, and generative AI — and I build things from scratch to truly understand them. Currently working on a large-scale SaaS product that brings together AI, web, desktop, and mobile into a single platform.
           </p>
           <p className={`${textClass} text-web-text-secondary dark:text-ai-text-secondary`}>
-            I'm looking for new challenges to grow my technical and professional skills.
+            I&apos;m looking for new challenges to grow my technical and professional skills.
           </p>
         </div>
       </section>

@@ -13,7 +13,7 @@ export default function AIProjectsPage() {
       <div className="space-y-4">
         <h1 className="text-4xl font-bold text-ai-text">AI & ML Projects</h1>
         <p className="text-lg text-ai-text-secondary max-w-2xl">
-          A selection of machine learning models, NLP pipelines, and AI systems I've built, including several implemented from scratch.
+          A selection of machine learning models, NLP pipelines, and AI systems I&apos;ve built, including several implemented from scratch.
         </p>
       </div>
 

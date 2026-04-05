@@ -13,7 +13,7 @@ export default function WebProjectsPage() {
       <div className="space-y-4">
         <h1 className="text-4xl font-bold text-web-text">Full-Stack Projects</h1>
         <p className="text-lg text-web-text-secondary max-w-2xl">
-          A selection of full-stack web applications and SaaS products I've built using modern web technologies.
+          A selection of full-stack web applications and SaaS products I&apos;ve built using modern web technologies.
         </p>
       </div>
 
